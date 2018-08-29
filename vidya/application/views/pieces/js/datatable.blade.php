@@ -1,0 +1,15 @@
+<script type="text/javascript" src="{{base_url('panelassets/js/plugins/ui/moment/moment.min.js')}}"></script>
+<script type="text/javascript" src="{{base_url('panelassets/js/plugins/pickers/daterangepicker.js')}}"></script>
+<script type="text/javascript" src="{{base_url('panelassets/js/plugins/pickers/anytime.min.js')}}"></script>
+<script type="text/javascript" src="{{base_url('panelassets/js/plugins/pickers/pickadate/picker.js')}}"></script>
+<script type="text/javascript" src="{{base_url('panelassets/js/plugins/pickers/pickadate/picker.date.js')}}"></script>
+<script type="text/javascript" src="{{base_url('panelassets/js/plugins/pickers/pickadate/picker.time.js')}}"></script>
+<script type="text/javascript" src="{{base_url('panelassets/js/plugins/pickers/pickadate/legacy.js')}}"></script>
+<script type="text/javascript" src="{{base_url('panelassets/js/plugins/forms/styling/switch.min.js')}}"></script>
+<script type="text/javascript" src="{{base_url('panelassets/js/plugins/forms/selects/select2.min.js')}}"></script>
+<script type="text/javascript" src="{{base_url('panelassets/js/plugins/forms/validation/validate.min.js')}}"></script>
+<script type="text/javascript" src="{{base_url('panelassets/js/plugins/uploaders/fileinput/fileinput.min.js')}}"></script>
+<script type="text/javascript" src="{{base_url('panelassets/js/plugins/forms/styling/switch.min.js')}}"></script>
+<script type="text/javascript" src="{{base_url('panelassets/js/plugins/tables/datatables/datatables.min.js')}}"></script>
+<script type="text/javascript" src="{{base_url('panelassets/js/plugins/forms/selects/select2.min.js')}}"></script>
+<script type="text/javascript" src="{{base_url('mainassets/js/data_index.js')}}"></script>
