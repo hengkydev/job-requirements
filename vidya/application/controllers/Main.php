@@ -11,16 +11,7 @@ class Main extends CI_Controller {
 	}
 
 	public function index(){
-		if(isset($_GET["vara"]) && isset($_GET["varb"])){
-		
-		for($i=0; $i<=$_GET["vara"]; $i++){
-			
-			if( $i % 2 == 0 && $i == $_GET["varb"]){
-				echo $_GET["varb"] + $i;
-			}
-			
-		}
-	}
+		echo "asdasd";
 	}
 
 	public function comingsoon(){

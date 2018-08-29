@@ -56,7 +56,6 @@
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 	define('MAX_FILE_SIZE', 99900000);
 	date_default_timezone_set('Asia/Jakarta');
-
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

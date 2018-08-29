@@ -1,5 +1,5 @@
 {
-	"description" : "The CodeIgniter Application with Composer",
+	"description" : "Hengkydev - job test requirements application",
 	"require": {
 		"php": ">=7.2",
 		"codeigniter/framework": "*",
