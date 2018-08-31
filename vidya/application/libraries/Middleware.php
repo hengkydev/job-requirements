@@ -62,32 +62,60 @@ class Middleware {
 		return $user;
 	}
 
-	public function user($redirect=true){
+	public function lecturer($redirect=true){
 		$this->ci->load->library('session');
 
-		if(!$this->ci->session->userdata('auth_user')){
+		if(!$this->ci->session->userdata('auth_lecturer')){
 			if($redirect){
-				$cur_url 	= (!isset($_SERVER['REQUEST_URI'])) ? '/user/dashboard' : $_SERVER['REQUEST_URI'];
-				$this->ci->session->set_userdata('catched_location_user', $cur_url);
-				redirect('auth/user');	
+				$cur_url 	= (!isset($_SERVER['REQUEST_URI'])) ? '/lecturer/dashboard' : $_SERVER['REQUEST_URI'];
+				$this->ci->session->set_userdata('catched_location_lecturer', $cur_url);
+				redirect('auth/lecturer');	
 			}
 			return false;
 		}
 
-		$session 			= DefuseLib::decrypt($this->ci->session->userdata('auth_user'));
-		$user 				= UsersModel::active()->find($session);
-		if(!$user){
-			$this->ci->session->unset_userdata('auth_user');
+		$session 			= DefuseLib::decrypt($this->ci->session->userdata('auth_lecturer'));
+		$table 				= LecturerModel::active()->find($session);
+		if(!$table){
+			$this->ci->session->unset_userdata('auth_lecturer');
 			if($redirect){
-				redirect('auth/user');
+				redirect('auth/lecturer');
 				exit();
 
 			}
 			return false;
 		}
 
-		$this->ci->blade->share('__USER',$user);
-		return $user;
+		$this->ci->blade->share('__LECTURER',$table);
+		return $table;
+	}
+
+	public function student($redirect=true){
+		$this->ci->load->library('session');
+
+		if(!$this->ci->session->userdata('auth_student')){
+			if($redirect){
+				$cur_url 	= (!isset($_SERVER['REQUEST_URI'])) ? '/student/dashboard' : $_SERVER['REQUEST_URI'];
+				$this->ci->session->set_userdata('catched_location_student', $cur_url);
+				redirect('auth/student');	
+			}
+			return false;
+		}
+
+		$session 			= DefuseLib::decrypt($this->ci->session->userdata('auth_student'));
+		$table 				= StudentModel::active()->find($session);
+		if(!$table){
+			$this->ci->session->unset_userdata('auth_student');
+			if($redirect){
+				redirect('auth/student');
+				exit();
+
+			}
+			return false;
+		}
+
+		$this->ci->blade->share('__STUDENT',$table);
+		return $table;
 	}
 
 	public function superuser($redirect=true)

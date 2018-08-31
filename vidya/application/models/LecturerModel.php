@@ -9,7 +9,7 @@ class LecturerModel extends MY_Model
 	public function getImgsrcAttribute()
 	{
 
-		return imgContentRender("users",$this->image,"profile");
+		return imgContentRender("lecturer",$this->image,"profile");
 	}
 
 	public function scopeStatus($query,$status){

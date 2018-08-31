@@ -6,7 +6,7 @@ class Datacollege extends CI_Controller {
 		parent::__construct();
 	}
 
-	public function usernamevalid(){
+	public function lectureridentityvalid(){
 		$rules = [
 			    'required' 	=>	[
 					['value'],
@@ -19,20 +19,21 @@ class Datacollege extends CI_Controller {
 			$this->restapi->error($validate->data);
 		}
 
-		$user 	= UsersModel::where("username",strtolower($this->input->post('value')));
+		$table 	= LecturerModel::where("identity_number",strtolower($this->input->post('value')));
 
 		if($this->input->post("exception")){
-			$user 	= $user->where("id","!=",$this->input->post("exception"));
+			$table 	= $table->where("id","!=",$this->input->post("exception"));
 		}
-		$user 	= $user->first();
-		if($user){
-			$this->restapi->error("Maaf username '{$user->username}' telah di gunakan");
+		$table 	= $table->first();
+
+		if($table){
+			$this->restapi->error("Maaf No Identitas '{$table->identity_number}' telah di gunakan");
 		}
 
-		$this->restapi->response("Oke, username ini dapat anda gunakan");
+		$this->restapi->response("Oke, no Identitas ini belum di pakai");
 	}
 
-	public function emailvalid(){
+	public function lectureremailvalid(){
 		$rules = [
 			    'required' 	=>	[
 					['value'],
@@ -48,14 +49,70 @@ class Datacollege extends CI_Controller {
 			$this->restapi->error($validate->data);
 		}
 
-		$user 	= UsersModel::where("email",$this->input->post('value'));
+		$table 	= LecturerModel::where("email",$this->input->post('value'));
 
 		if($this->input->post("exception")){
-			$user 	= $user->where("id","!=",$this->input->post("exception"));
+			$table 	= $user->where("id","!=",$this->input->post("exception"));
 		}
-		$user 	= $user->first();
-		if($user){
-			$this->restapi->error("Maaf email '{$user->email}' telah di gunakan");
+		$table 	= $table->first();
+		if($table){
+			$this->restapi->error("Maaf email '{$table->email}' telah di gunakan");
+		}
+
+		$this->restapi->response("Oke, Email ini dapat anda gunakan");
+	}
+
+	public function studentidentityvalid(){
+		$rules = [
+			    'required' 	=>	[
+					['value'],
+				],
+			];
+		
+		$validate 	= $this->validation->check($rules,'post');
+
+		if(!$validate->correct){
+			$this->restapi->error($validate->data);
+		}
+
+		$table 	= StudentModel::where("identity_number",strtolower($this->input->post('value')));
+
+		if($this->input->post("exception")){
+			$table 	= $table->where("id","!=",$this->input->post("exception"));
+		}
+		$table 	= $table->first();
+
+		if($table){
+			$this->restapi->error("Maaf No Identitas '{$table->identity_number}' telah di gunakan");
+		}
+
+		$this->restapi->response("Oke, no Identitas ini belum di pakai");
+	}
+
+	public function studentemailvalid(){
+		$rules = [
+			    'required' 	=>	[
+					['value'],
+				],
+				'email'		=> [
+					['value']
+				]
+			];
+		
+		$validate 	= $this->validation->check($rules,'post');
+
+		if(!$validate->correct){
+			$this->restapi->error($validate->data);
+		}
+
+		$table 	= StudentModel::where("email",$this->input->post('value'));
+
+		if($this->input->post("exception")){
+			$table 	= $user->where("id","!=",$this->input->post("exception"));
+		}
+		$table 	= $table->first();
+		if($table){
+			$this->restapi->error("Maaf email '{$table->email}' telah di gunakan");
 		}
 
 		$this->restapi->response("Oke, Email ini dapat anda gunakan");

@@ -12,7 +12,7 @@ class MateriModel extends MY_Model
 
 	public function lecturer()
 	{
-		return $this->hasOne('LecturerModel', 'id', 'lecture_id');
+		return $this->hasOne('LecturerModel', 'id', 'lecturer_id');
 	}
 
 	public function comments()

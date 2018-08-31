@@ -10,6 +10,14 @@ body {
 .bg-wallpaper {
 	background:rgba(51, 51, 51, 0.5);
 }
+
+.bg-wallpaper-student {
+	background: url('../img/pattern.png');
+	background-size: 700px;
+	background-attachment: fixed;
+	background-repeat: repeat;
+	background-position: center;
+}
 .time-frame {
 	color: #fff;
 	display: block;

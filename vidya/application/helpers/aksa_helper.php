@@ -322,10 +322,10 @@ if ( ! function_exists('content_url')){
 	function content_url($string=false){
 
 		if($string){
-			return CONTENT_URL.'/'.$string;
+			return getenv('CONTENT_URL').'/'.$string;
 		}
 		
-		return CONTENT_URL;
+		return getenv('CONTENT_URL');
 	}
 }
 
@@ -334,10 +334,10 @@ if ( ! function_exists('data_url')){
 	function data_url($string=false){
 
 		if($string){
-			return DATA_URL.'/'.$string;
+			return getenv('DATA_URL').'/'.$string;
 		}
 		
-		return DATA_URL;
+		return getenv('DATA_URL');
 	}
 }
 
@@ -346,10 +346,10 @@ if ( ! function_exists('content_dir')){
 	function content_dir($string=false){
 
 		if($string){
-			return __DIR__.CONTENT_DIR.$string;
+			return __DIR__.getenv('CONTENT_DIR').$string;
 		}
 		
-		return __DIR__.CONTENT_DIR;
+		return __DIR__.getenv('CONTENT_DIR');
 	}
 }
 

@@ -46,101 +46,54 @@
 				<a href="{{base_url('superuser')}}"><i class="icon-home4"></i> <span>Beranda</span></a>
 			</li>
 			<li>
-				<a href="#"><i class="icon-magazine"></i> <span>Artikel / Berita</span></a>
+				<a href="#"><i class="icon-magazine"></i> <span>Materi Pembelajaran</span></a>
 				<ul>
-					<li class="{{match($__MENU,"post_create","active")}}"><a href="{{base_url("superuser/post/create")}}">Buat Baru</a></li>
+					<li class="{{match($__MENU,"post_create","active")}}"><a href="{{base_url("superuser/materi/create")}}">Buat Baru</a></li>
 					<li class="{{match($__MENU,"post","active")}}">
-						<a href="{{base_url("superuser/post")}}">Lihat Daftar</a>
-					</li>
-					<li class="navigation-divider"></li>
-					<li class="{{match($__MENU,"postcategories_create","active")}}">
-						<a href="{{base_url("superuser/postcategories/create")}}">Buat Kategori</a>
-					</li>
-					<li class="{{match($__MENU,"postcategories","active")}}">
-						<a href="{{base_url("superuser/postcategories")}}">Lihat Daftar Kategori</a>
-					</li>
-					<li class="navigation-divider"></li>
-					<li class="{{match($__MENU,"posttags_create","active")}}">
-						<a href="{{base_url("superuser/posttags/create")}}">Buat Tag</a>
-					</li>
-					<li class="{{match($__MENU,"posttags","active")}}">
-						<a href="{{base_url("superuser/posttags")}}">Lihat Daftar Tag</a>
+						<a href="{{base_url("superuser/materi")}}">Lihat Daftar</a>
 					</li>
 				</ul>
 			</li>
 			<li>
-				<a href="#"><i class=" icon-play"></i> <span>Video</span></a>
+				<a href="#"><i class=" icon-user-tie"></i> <span>Pengajar</span></a>
 				<ul>
-					<li class="{{match($__MENU,"video_create","active")}}">
-						<a href="{{base_url("superuser/video/create")}}">Buat Baru</a>
+					<li class="{{match($__MENU,"lecturer_create","active")}}">
+						<a href="{{base_url("superuser/lecturer/create")}}">Buat Baru</a>
 					</li>
-					<li class="{{match($__MENU,"video","active")}}">
-						<a href="{{base_url("superuser/video")}}">Lihat Daftar</a>
+					<li class="{{match($__MENU,"lecturer","active")}}">
+						<a href="{{base_url("superuser/lecturer")}}">Lihat Daftar</a>
 					</li>
 				</ul>
 			</li>
 			<li>
-				<a href="#"><i class=" icon-calendar22"></i> <span>Workshop</span></a>
+				<a href="#"><i class="  icon-user-tie"></i> <span>Mahasiswa</span></a>
 				<ul>
-					<li class="{{match($__MENU,"workshop_create","active")}}">
-						<a href="{{base_url("superuser/workshop/create")}}">Buat Baru</a>
+					<li class="{{match($__MENU,"student_create","active")}}">
+						<a href="{{base_url("superuser/student/create")}}">Buat Baru</a>
 					</li>
-					<li class="{{match($__MENU,"workshop","active")}}">
-						<a href="{{base_url("superuser/workshop")}}">Lihat Daftar</a>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="#"><i class="icon-users"></i> <span> Pengguna</span></a>
-				<ul>
-					<li class="{{match($__MENU,"user_create","active")}}">
-						<a href="{{base_url("superuser/user/create")}}">Buat Baru</a>
-					</li>
-					<li class="{{match($__MENU,"user","active")}}">
-						<a href="{{base_url("superuser/user")}}">Lihat Daftar</a>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="#"><i class=" icon-brain"></i> <span>Trading Idea</span></a>
-				<ul>
-					<li class="{{match($__MENU,"tradingidea_create","active")}}">
-						<a href="{{base_url("superuser/tradingidea/create")}}">Buat Baru</a>
-					</li>
-					<li class="{{match($__MENU,"tradingidea","active")}}">
-						<a href="{{base_url("superuser/tradingidea")}}">Lihat Daftar</a>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="#"><i class="  icon-bell2"></i> <span>Trading Alert</span></a>
-				<ul>
-					<li class="{{match($__MENU,"tradingalert_create","active")}}">
-						<a href="{{base_url("superuser/tradingalert/create")}}">Buat Baru</a>
-					</li>
-					<li class="{{match($__MENU,"tradingalert","active")}}">
-						<a href="{{base_url("superuser/tradingalert")}}">Lihat Daftar</a>
+					<li class="{{match($__MENU,"student","active")}}">
+						<a href="{{base_url("superuser/lecturer")}}">Lihat Daftar</a>
 					</li>
 				</ul>
 			</li>
 			<!-- /main -->
 
 			<!-- Forms -->
-			<li class="navigation-header"><span>Website optimization</span> <i class="icon-menu" title="Forms"></i></li>
-			<li class="{{match($__MENU,"seo","active")}}">
-				<a href="{{base_url('superuser/seo')}}" >
-					<i class=" icon-sphere"></i> <span> SEO</span>
-				</a>
-			</li>
-			<li class="{{match($__MENU,"socialmedia","active")}}">
-				<a href="{{base_url('superuser/socialmedia')}}"><i class=" icon-link"></i> <span> Social Media</span></a>
-			</li>
-			<li class="{{match($__MENU,"synchronization","active")}}">
-				<a href="{{base_url('superuser/synchronization')}}"><i class=" icon-rotate-cw2"></i> <span> Sinkronisasi</span></a>
-			</li>
-			<li class="{{match($__MENU,"config","active")}}">
-				<a href="{{base_url('superuser/configuration')}}"><i class=" icon-cog"></i> <span> Konfigurasi</span></a>
-			</li>
+	<!-- 	<li class="navigation-header"><span>Website optimization</span> <i class="icon-menu" title="Forms"></i></li>
+	<li class="{{match($__MENU,"seo","active")}}">
+		<a href="{{base_url('superuser/seo')}}" >
+			<i class=" icon-sphere"></i> <span> SEO</span>
+		</a>
+	</li>
+	<li class="{{match($__MENU,"socialmedia","active")}}">
+		<a href="{{base_url('superuser/socialmedia')}}"><i class=" icon-link"></i> <span> Social Media</span></a>
+	</li>
+	<li class="{{match($__MENU,"synchronization","active")}}">
+		<a href="{{base_url('superuser/synchronization')}}"><i class=" icon-rotate-cw2"></i> <span> Sinkronisasi</span></a>
+	</li>
+	<li class="{{match($__MENU,"config","active")}}">
+		<a href="{{base_url('superuser/configuration')}}"><i class=" icon-cog"></i> <span> Konfigurasi</span></a>
+	</li> -->
 			<!-- /page kits -->
 
 		</ul>

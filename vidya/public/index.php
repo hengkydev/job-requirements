@@ -319,10 +319,10 @@ $dotenv->load();
 $capsule = new Illuminate\Database\Capsule\Manager;
 $capsule->addConnection([
     'driver'    => 'mysql',
-    'host'      => DB_HOST,//$_ENV['DB_HOST'],
-    'database'  => DB_NAME,//$_ENV['DB_NAME'],
-    'username'  => DB_USERNAME,//$_ENV['DB_USERNAME'],
-    'password'  => DB_PASSWORD,//$_ENV['DB_PASSWORD'],
+    'host'      => $_ENV['DB_HOST'],
+    'database'  => $_ENV['DB_NAME'],
+    'username'  => $_ENV['DB_USERNAME'],
+    'password'  => $_ENV['DB_PASSWORD'],
     'charset'   => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix'    => '',

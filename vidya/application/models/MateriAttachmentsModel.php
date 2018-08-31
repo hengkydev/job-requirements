@@ -1,6 +1,6 @@
 <?php
 
-class MateriAttachmentModel extends MY_Model
+class MateriAttachmentsModel extends MY_Model
 {
     protected $table 	= "materi_attachments";
 	protected $appends 	= ['img_src'];

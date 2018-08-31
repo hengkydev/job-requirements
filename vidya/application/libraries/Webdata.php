@@ -66,6 +66,8 @@ class Webdata {
 		$this->ci->blade->share('ctrl',$this->ci);			
 	}
 
+	
+
 	public function userLoad(){
 
 		$this->errorForm();

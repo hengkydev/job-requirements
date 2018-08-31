@@ -3575,7 +3575,7 @@ select[multiple].input-group-xs > .input-group-btn > .btn {
   }
 }
 .header-highlight .navbar-header:not([class*=bg-]) {
-  background-image: linear-gradient(135deg, #2c41a0 0%, #4081f6 100%);
+  background-color: #263238;
 }
 .header-highlight .navbar-header > .navbar-nav > li > a {
   color: rgba(255, 255, 255, 0.9);

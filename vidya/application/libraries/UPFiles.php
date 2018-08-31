@@ -224,6 +224,7 @@ class UPFiles {
 	}
 
 
+
 	public function allSizeImageUpload($dir,$file,$filename,array $size=[500,250,100]){
 		$upload 				= $this->uploadImage(content_dir("images/lg/{$dir}"),$file,$filename);
 
@@ -294,6 +295,167 @@ class UPFiles {
 
 		return toObject($data);
 	}
+
+
+	public function upload(array $config){
+
+		$path 				= (!isset($config['path'])) ? content_dir() : $config['path'];
+		$name 				= (!isset($config['name'])) ? 'files' : $config['name'];
+		$max_size 			= (!isset($config['max_size'])) ? 5000 : $config['max_size'];
+		$allowed 			= (!isset($config['allowed'])) ? 'jpg|gif|png|jpeg' : $config['allowed'];
+
+		$data['status'] 		= false;
+		$data['message'] 		= "File {$name} did not uploaded";
+		$data['result'] 		= null;
+		
+		 $config_upload = array(
+            'upload_path'   => $path,
+            'allowed_types' => $allowed,
+            'max_size'		=> $max_size,
+            'overwrite'     => false,
+        );
+
+        if(isset($config['file_name'])){
+        	$config_upload['file_name'] 	= $config['file_name'];
+        }else {
+        	$config_upload['encrypt_name'] 	= TRUE;
+        }
+
+ 		$this->ci->load->library('upload', $config_upload);
+        $this->ci->upload->initialize($config_upload);
+
+        if ($this->ci->upload->do_upload($name)) {
+
+        	$data 				= [
+    			"status"		=> true,
+    			"result" 		=> $this->ci->upload->data()
+    		];
+        } else {
+        	$data 				= [
+    			"status"		=> false,
+    			"result" 		=> $this->ci->upload->display_errors()
+    		];
+        }
+
+        return toObject($data);
+
+	}
+
+	public function multiple(array $config){
+
+		$path 				= (!isset($config['path'])) ? content_dir() : $config['path'];
+		$name 				= (!isset($config['name'])) ? 'files' : $config['name'];
+		$max_size 			= (!isset($config['max_size'])) ? 5000 : $config['max_size'];
+		$allowed 			= (!isset($config['allowed'])) ? 'jpg|gif|png|jpeg' : $config['allowed'];
+
+		$data['status'] 		= false;
+		$data['message'] 		= "File {$name} did not uploaded";
+		$data['result'] 		= null;
+		
+		 $config_upload = array(
+            'upload_path'   => $path,
+            'allowed_types' => $allowed,
+            'max_size'		=> $max_size,
+            'overwrite'     => false,
+        );
+
+		
+
+        $fail 	= 0;
+        $count 	= count($_FILES[$name]['name']);
+
+        foreach ($_FILES[$name]['name'] as $key => $value) {
+            $_FILES['system_file']['name']		= $_FILES[$name]['name'][$key];
+            $_FILES['system_file']['type']		= $_FILES[$name]['type'][$key];
+            $_FILES['system_file']['tmp_name']	= $_FILES[$name]['tmp_name'][$key];
+            $_FILES['system_file']['error']		= $_FILES[$name]['error'][$key];
+            $_FILES['system_file']['size']		= $_FILES[$name]['size'][$key];
+
+            if(isset($config['file_name'][$key])){
+	        	$config_upload['file_name'] 	= 'ATTACHMENT__'.$config['file_name'][$key].'__['.getToken(5).']__('.date('Ymdhis').')';
+	        }else {
+	        	$config_upload['encrypt_name'] 	= TRUE;
+	        }
+
+	        $this->ci->load->library('upload', $config_upload);
+            $this->ci->upload->initialize($config_upload);
+
+            if ($this->ci->upload->do_upload('system_file')) {
+
+        		$data['result'][] 	= [
+        			"status"		=> true,
+        			"result" 		=> $this->ci->upload->data()
+        		];
+            } else {
+            	$fail++;
+            	$data['result'][] 	= [
+        			"status"		=> false,
+        			"result" 		=> $this->ci->upload->display_errors()
+        		];
+            }
+        }
+
+        if($fail>0){
+        	$message 		= "Some File didnt uploaded !";
+        }else if($fail>=$count){
+        	$message 		= "All File didnt uploaded !";
+        }else{
+        	$message 		= "All File Uploaded !";
+        }
+
+        if($fail<$count){
+        	$data['status']	= true;
+        }else{
+        	$data['status']	= false;
+        }
+        $data['message'] 	= $message;
+        return toObject($data);
+
+	}
+
+	public function multipleFile(array $config){
+
+		$path 				= (!isset($config['path'])) ? content_dir() : $config['path'];
+		$name 				= (!isset($config['name'])) ? 'files' : $config['name'];
+		$max_size 			= (!isset($config['max_size'])) ? 5000 : $config['max_size'];
+		$allowed 			= (!isset($config['allowed'])) ? 'jpg|gif|png|jpeg' : $config['max_size'];
+
+		
+		 $config = array(
+            'upload_path'   => $path,
+            'allowed_types' => $allowed,
+            'max_size'		=> $max_size,
+            'overwrite'     => false,
+        );
+
+		 if(!isset($config['file_name'])){
+        	$config['file_name'] 	= $config['file_name'];
+        }else {
+        	$config['encrypt_name'] 	= TRUE;
+        }
+
+        $this->load->library('upload', $config);
+
+         foreach ($files[$name] as $key => $image) {
+            $_FILES['system_file[]']['name']		= $files['name'][$key];
+            $_FILES['system_file[]']['type']		= $files['type'][$key];
+            $_FILES['system_file[]']['tmp_name']	= $files['tmp_name'][$key];
+            $_FILES['system_file[]']['error']		= $files['error'][$key];
+            $_FILES['system_file[]']['size']		= $files['size'][$key];
+
+            $this->upload->initialize($config);
+
+            if ($this->upload->do_upload('system_file[]')) {
+            	$data['auth']		= true;
+            	array_push($data['msg'],$this->upload->data());
+            } else {
+            	$data['auth']		= ($data['auth']==true) ? true : false;
+            	array_push($data['msg'],$this->upload->display_errors());
+            }
+        }
+
+	}
+
 	public function resize(array $config){
 
 		$origin 				= $config['origin'];
