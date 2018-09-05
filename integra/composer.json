@@ -1,0 +1,32 @@
+{
+	"description" : "Hengkydev - job test requirements application",
+	"require": {
+		"php": ">=7.2",
+		"codeigniter/framework": "*",
+		"philo/laravel-blade": "*",
+		"nesbot/carbon": "*",
+		"vlucas/valitron": "*",
+		"vlucas/phpdotenv": "*",
+		"phpmailer/phpmailer": "*",
+		"illuminate/database": "*",
+		"illuminate/events": "*",
+		"php-curl-class/php-curl-class": "*",
+		"defuse/php-encryption" : "*",
+		"dompdf/dompdf": "dev-master",
+		"gregwar/image": "*",
+		"giggsey/libphonenumber-for-php": "*",
+		"mobiledetect/mobiledetectlib": "*",
+		"google/recaptcha": "~1.1"
+	},
+	"autoload": {
+        "classmap": [
+            "application/core",
+            "application/models",
+            "application/libraries"
+        ]
+    },
+	"require-dev": {
+		"mikey179/vfsStream": "1.1.*",
+        "phpunit/phpunit": "~4.0"
+	}
+}
